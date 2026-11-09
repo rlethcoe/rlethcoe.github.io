@@ -61,8 +61,8 @@ details.section>summary .chev svg{width:30px;height:30px}
 
 /* Version 16: tighter accordion headers with one arrow style for sections and projects. */
 details.section>summary,details.section.fd>summary,details.section.ai>summary,details.section.pc>summary,details.section.te>summary{padding:14px 20px;gap:14px}
-details.section>summary .ttl{font-size:26px;line-height:1.15}
-details.section>summary .sub{font-size:15px;margin-top:2px;line-height:1.45}
+details.section>summary .ttl,.hero-name{font-size:26px;line-height:1.15}
+details.section>summary .sub,.hero-role{font-size:15px;margin-top:2px;line-height:1.45}
 details.section>summary .chev,details.section.fd>summary .chev,details.section.pc>summary .chev{width:40px;height:40px;background:rgba(255,255,255,.5)}
 details.section>summary .chev svg{width:26px;height:26px}
 details.item>summary{padding:9px 14px;gap:10px}
@@ -71,9 +71,9 @@ details.item>summary .name{font-size:18px;line-height:1.25}
 details.section details.item>summary .plus{flex:none;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;font-size:0;transition:transform .2s}
 details.item>summary .plus svg{width:20px;height:20px;display:block}
 details.item[open]>summary .plus{transform:rotate(180deg)}
-.tl>details.item:before{top:14px}
-.tl>details.item:after{top:23px}
-@media(max-width:600px){details.section>summary,details.section.fd>summary,details.section.ai>summary,details.section.pc>summary,details.section.te>summary{padding:12px 14px}details.section>summary .ttl{font-size:22px}details.section>summary .sub{font-size:14px}details.section>summary .chev{width:36px;height:36px}details.section>summary .chev svg{width:24px;height:24px}details.item>summary{padding:8px 10px}details.item>summary .name{font-size:16.5px}details.item>summary .plus{width:28px;height:28px}}
+.tl>details.item:before{top:19px}
+.tl>details.item:after{top:28px}
+@media(max-width:600px){details.section>summary,details.section.fd>summary,details.section.ai>summary,details.section.pc>summary,details.section.te>summary{padding:12px 14px}details.section>summary .ttl,.hero-name{font-size:22px}details.section>summary .sub,.hero-role{font-size:14px}details.section>summary .chev{width:36px;height:36px}details.section>summary .chev svg{width:24px;height:24px}details.item>summary{padding:8px 10px}details.item>summary .name{font-size:16.5px}details.item>summary .plus{width:28px;height:28px}}
 
 /* Version 16: dark, colorblind-safe section colors with white text and a soft sheen. */
 :root{--fd:#7B3294;--fd-dark:#5C2370;--fd-soft:#f6f0f9;--fd-line:#d3bde0;--ai:#1F5FAD;--ai-dark:#164781;--ai-soft:#eef4fb;--ai-line:#b7cde9;--pc:#0F7068;--pc-dark:#0A524C;--pc-soft:#edf7f6;--pc-line:#b0d6d2;--te:#5A4800;--te-dark:#3F3300;--te-soft:#f8f5ea;--te-line:#d6cca3;--ce-c:#C2410C;--ex-c:#A11D48}
@@ -123,8 +123,8 @@ details.section{border:0;border-radius:16px;overflow:visible;box-shadow:none;bac
 details.section>summary,details.section.fd>summary,details.section.ai>summary,details.section.pc>summary,details.section.te>summary{background:var(--c);color:var(--bar-ink);border-radius:16px;box-shadow:0 5px 0 var(--c2);transition:transform .12s ease,box-shadow .12s ease}
 details.section[open]>summary{border-radius:16px 16px 0 0}
 details.section>summary .ttl,details.section>summary .sub,details.section>summary .lab,details.section.fd>summary .sub,details.section.ai>summary .sub,details.section.pc>summary .sub,details.section.te>summary .sub{color:var(--bar-ink)}
-details.section>summary .ttl{font-weight:800;letter-spacing:-.01em}
-details.section>summary .sub{opacity:1;font-weight:500}
+details.section>summary .ttl,.hero-name{font-weight:800;letter-spacing:-.01em}
+details.section>summary .sub,.hero-role{opacity:1;font-weight:500}
 details.section>summary:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--c2),0 0 0 3px #fff,0 0 0 6px #1b1b1b}
 details.section>summary:active{transform:translateY(3px);box-shadow:0 2px 0 var(--c2)}
 details.section>summary:focus-visible{outline:none;box-shadow:0 5px 0 var(--c2),0 0 0 3px #fff,0 0 0 6px #1b1b1b}
@@ -171,8 +171,6 @@ details.section>summary .chev,details.section.fd>summary .chev,details.section.p
 /* Version 19: blended jewel-tone banner, flat footer, dark blue hover ring. */
 .hero-bar,footer .hd{background:linear-gradient(90deg,#4338CA 0%,#0369A1 20%,#0F766E 40%,#A21CAF 60%,#C2410C 80%,#BE123C 100%);color:#fff;border:0}
 .hero-bar span,.hero-bar strong,footer .hd{color:#fff}
-footer .bd .pill,footer .pill{background:#4338CA;color:#fff!important;background-image:none;box-shadow:none;border:0;font-weight:700;transition:transform .12s ease,box-shadow .12s ease}
-footer .pill:hover,footer .pill:focus-visible{filter:none;transform:translateY(-2px);box-shadow:0 0 0 3px #fff,0 0 0 6px #1E3A8A}
 .pill-row .pill:hover,.pill-row .pill:focus-visible,details.section>summary:hover,details.section>summary:focus-visible,details.section details.item>summary:hover,details.section details.item>summary:focus-visible,.section .link:hover,.pill-row .pill:active,details.section>summary:active,details.section details.item>summary:active{box-shadow:0 0 0 3px #fff,0 0 0 6px #1E3A8A}
 .icons a:focus-visible,:focus-visible{outline-color:#1E3A8A}
 
@@ -187,22 +185,187 @@ footer .pill:hover,footer .pill:focus-visible{filter:none;transform:translateY(-
 .side-project .sp-link:hover,.side-project .sp-link:focus-visible{transform:translateY(-2px);box-shadow:0 0 0 3px #fff,0 0 0 6px #1E3A8A;outline:none}
 @media(max-width:600px){.side-project .sp-bd{grid-template-columns:1fr}.side-project img{width:96px;height:96px}}
 
-/* Version 17: Connect section holds the feedback board, email, and copyright. */
-footer h2.hd{margin:0;font-size:22px;line-height:1.3}
-footer .bd{padding:22px 26px 26px}
-footer .bd p{color:var(--ink);font-size:17px;line-height:1.6}
-footer .connect-board{display:block;width:100%;height:500px;border:0;border-radius:10px;background:#edf2f7;margin:4px 0 8px}
-footer .board-link{font-size:15px;margin:0 0 22px}
-footer .board-link a{color:#1E3A8A;font-weight:700}
-footer .email-row{text-align:center;margin:18px 0 0}
+/* Contact button and copyright. */
+footer{background:transparent;border:0;overflow:visible}
+footer .email-row{text-align:center;margin:0}
 footer .email-row .pill{display:inline-block;padding:12px 20px;border-radius:10px}
 .copyright{text-align:center;font-size:14px;color:var(--muted);margin:-28px 0 40px}
-@media(max-width:600px){footer .bd{padding:18px 16px 22px}footer .connect-board{height:440px}}
 
 /* Version 17: more space above and below every colored bar. */
 details.section{margin-top:0;margin-bottom:30px}
 details.section[open]{margin-bottom:36px}
-details.item{margin:0 0 18px}
+details.item{--timeline-gap:18px;margin:0 0 var(--timeline-gap)}
 .tl>details.item:first-child{margin-top:6px}
 footer{margin-top:36px}
-@media(max-width:600px){details.section{margin-bottom:22px}details.item{margin-bottom:14px}}
+@media(max-width:600px){details.section{margin-bottom:22px}details.item{--timeline-gap:14px}}
+
+.hero { --c: #000; }
+.hero-heading {
+  grid-column: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 20px;
+  background: var(--c);
+  color: #fff;
+}
+
+.hero-name { margin: 0; }
+.hero-role { margin-bottom: 0; }
+.hero-contact { flex: none; margin-left: auto; }
+.hero-contact a { width: 44px; height: 44px; border-radius: 50%; background: #fff; color: var(--c); }
+.hero-contact a:hover { background: var(--line); }
+.hero-contact a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+.hero-body {
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+}
+.hero-text { grid-column: 1; justify-content: center; padding: clamp(24px, 4vw, 42px); }
+.hero-tagline {
+  font-size: clamp(24px, 3.2vw, 36px);
+  line-height: 1.15;
+  letter-spacing: -.025em;
+  margin: 0 0 12px;
+}
+
+.hero-text > p { max-width: 55ch; font-size: 16px; }
+.hero-photo {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  min-height: 0;
+  border-left: var(--accordion-outline) solid var(--c);
+}
+.hero-photo img { object-position: center top; }
+
+.visitor-greeting { margin-top: 12px; }
+.visitor-greeting label { display: block; margin-bottom: 7px; }
+.visitor-greeting :is(label, .visitor-response) {
+  color: var(--ink);
+  font-size: 1em;
+  font-weight: 650;
+}
+.visitor-fields { display: flex; flex-wrap: wrap; gap: 8px; }
+.visitor-fields input, .visitor-fields button {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--muted);
+  border-radius: 6px;
+  font: inherit;
+}
+.visitor-fields input { flex: 1 1 145px; min-width: 0; color: var(--ink); }
+.visitor-fields button,
+footer .email-row .pill {
+  background: #fff;
+  border: 3px solid #000;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.visitor-fields button:is(:hover, :focus-visible),
+footer .email-row .pill:is(:hover, :focus-visible) {
+  background: #000;
+  color: #fff;
+}
+
+.visitor-fields button:focus-visible,
+footer .email-row .pill:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.visitor-fields button:disabled { cursor: wait; }
+.visitor-greeting :is(.visitor-notice, .visitor-response) { margin: 7px 0 0; }
+.visitor-greeting .visitor-notice { font-size: 14px; }
+.visitor-response:empty { margin: 0; }
+
+@media (max-width: 780px) {
+  .hero-body { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .hero-photo {
+    grid-column: 1;
+    grid-row: auto;
+    order: 0;
+    aspect-ratio: 4 / 5;
+    border-left: 0;
+    border-top: var(--accordion-outline) solid var(--c);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-heading { padding: 12px 14px; }
+}
+
+/* Outlined section and project accordions use the existing category colors. */
+.hero + details.section { margin-top: 24px; }
+
+.hero,
+details.section,
+details.section details.item {
+  --accordion-outline: 3px;
+  border: var(--accordion-outline) solid var(--c);
+  background: #fff;
+}
+
+.tl > details.item::after {
+  height: calc(100% + var(--timeline-gap) + 2 * var(--accordion-outline));
+}
+
+.wrap details.section > summary,
+.wrap details.section details.item > summary {
+  --summary-fill: #fff;
+  --summary-ink: var(--c);
+  background: var(--summary-fill);
+  color: var(--summary-ink);
+  box-shadow: none;
+  transform: none;
+  transition: none;
+}
+
+.wrap details.section > summary { border-radius: 13px; }
+.wrap details.section details.item > summary { border-radius: 9px; }
+
+.wrap details.section[open] > summary,
+.wrap details.section details.item[open] > summary {
+  border-bottom: 1px solid var(--c-line);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.wrap details.section > summary :is(.ttl, .sub, .lab),
+.wrap details.section details.item > summary :is(.name, .when) {
+  color: var(--summary-ink);
+  opacity: 1;
+}
+
+.wrap details.section > summary .chev,
+.wrap details.section details.item > summary .plus {
+  background: var(--summary-ink);
+  color: var(--summary-fill);
+}
+
+.wrap details.section > .section-body { border: 0; }
+
+.wrap details.section[open] > summary,
+.wrap details.section details.item[open] > summary,
+.wrap details.section > summary:focus-visible,
+.wrap details.section details.item > summary:focus-visible {
+  --summary-fill: var(--c);
+  --summary-ink: #fff;
+}
+
+@media (hover: hover) {
+  .wrap details.section > summary:hover,
+  .wrap details.section details.item > summary:hover {
+    --summary-fill: var(--c);
+    --summary-ink: #fff;
+  }
+}
+
+.wrap details.section > summary:focus-visible,
+.wrap details.section details.item > summary:focus-visible {
+  outline: 2px solid var(--summary-ink);
+  outline-offset: -5px;
+}

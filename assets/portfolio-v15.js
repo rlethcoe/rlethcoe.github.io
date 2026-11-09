@@ -19,23 +19,76 @@ dialog.addEventListener('close',()=>opener?.focus());
 })();
 
 
-// Fit the three headline lines to one shared width without changing their text.
-(()=>{
- const heading=document.querySelector('.headline-block');
- if(!heading)return;
- const lines=[...heading.querySelectorAll('.headline-line')];
- function textWidth(line){const r=document.createRange();r.selectNodeContents(line);return r.getBoundingClientRect().width}
- function fitHeadline(){
-  const width=heading.clientWidth;
-  if(!width)return;
-  lines.forEach(line=>{
-   line.style.fontSize='100px';
-   const measured=textWidth(line);
-   if(measured)line.style.fontSize=Math.floor((width-2)*100/measured*100)/100+'px';
+// A configured HTTPS relay writes statements to the LRS with server-side credentials.
+(() => {
+  const form = document.getElementById('visitor-greeting');
+  if (!form) return;
+
+  const field = document.getElementById('visitor-name');
+  const message = document.getElementById('visitor-response');
+  const button = form.querySelector('button');
+  const origin = 'https://rlethcoe.com';
+  const endpoint = form.dataset.xapiEndpoint;
+  const recording = location.origin === origin && endpoint.startsWith('https://');
+  let visitorId;
+
+  if (recording) {
+    const key = 'portfolio-visitor-id';
+    visitorId = crypto.randomUUID();
+    try {
+      const savedId = localStorage.getItem(key);
+      if (savedId) visitorId = savedId;
+      else localStorage.setItem(key, visitorId);
+    } catch {
+      // When storage is unavailable, use the identifier for this visit only.
+    }
+  }
+
+  async function record(verb, name) {
+    const actor = { objectType: 'Agent', account: { homePage: origin, name: visitorId } };
+    if (name) actor.name = name;
+    const statement = {
+      id: crypto.randomUUID(),
+      timestamp: new Date().toISOString(),
+      actor,
+      verb: { id: origin + '/xapi/verbs/' + verb, display: { 'en-US': verb } },
+      object: {
+        objectType: 'Activity',
+        id: origin + '/',
+        definition: { name: { 'en-US': 'Learning design portfolio' } },
+      },
+    };
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(statement),
+      credentials: 'omit',
+      referrerPolicy: 'no-referrer',
+      keepalive: true,
+    });
+    if (!response.ok) throw new Error('The visitor log could not save this statement.');
+  }
+
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (button.disabled) return;
+    const name = field.value.trim().slice(0, 40);
+    const welcome = 'Thanks for visiting my portfolio. Open any section below to see work from my time in higher education as a student, teacher, and learning designer.';
+    message.textContent = name ? 'Hey, ' + name + '! ' + welcome : welcome;
+    if (!recording || !name) return;
+    button.disabled = true;
+    try {
+      await record('greeted', name);
+    } catch {
+      message.textContent += ' The visitor log is unavailable right now.';
+    } finally {
+      button.disabled = false;
+    }
   });
- }
- fitHeadline();
- if(window.ResizeObserver)new ResizeObserver(fitHeadline).observe(heading);
- else addEventListener('resize',fitHeadline);
- if(document.fonts)document.fonts.ready.then(fitHeadline);
+
+  form.hidden = false;
+  if (recording) {
+    document.getElementById('visitor-notice').hidden = false;
+    record('visited').catch(() => {});
+  }
 })();
