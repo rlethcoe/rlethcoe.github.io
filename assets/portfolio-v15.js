@@ -73,7 +73,7 @@ dialog.addEventListener('close',()=>opener?.focus());
     event.preventDefault();
     if (button.disabled) return;
     const name = field.value.trim().slice(0, 40);
-    const welcome = 'Thanks for visiting my portfolio. Open any section below to see work from my time in higher education as a student, teacher, and learning designer.';
+    const welcome = 'Thanks for visiting my portfolio. Open any section below to see work from my time in higher education as a student, teacher, and instructional designer.';
     message.textContent = name ? 'Hey, ' + name + '! ' + welcome : welcome;
     if (!recording || !name) return;
     button.disabled = true;

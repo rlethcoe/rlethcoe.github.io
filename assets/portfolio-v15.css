@@ -372,3 +372,12 @@ details.section details.item {
   outline: 2px solid var(--summary-ink);
   outline-offset: -5px;
 }
+
+/* Version 35: trainer card splash. The card fills its column and sets the hero height. No divider line beside it. Its transparent corners sit on black at the top (joining the name bar) and white at the bottom (joining the text area). */
+.hero-photo.hero-card { border-left: 0; border-top: 0; background: linear-gradient(#000 0 50%, #fff 50% 100%); align-self: stretch; }
+.hero-photo.hero-card img { position: static; display: block; width: 100%; height: auto; object-fit: initial; }
+/* Tagline starts at the top of the text area, leaving room at the bottom for the greeting reply. */
+.hero-text { justify-content: flex-start; padding: clamp(22px, 3vw, 32px) clamp(24px, 4vw, 42px) clamp(18px, 2.4vw, 26px); }
+@media (max-width: 780px) {
+  .hero-photo.hero-card { aspect-ratio: auto; background: #fff; }
+}
