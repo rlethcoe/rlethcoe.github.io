@@ -89,7 +89,6 @@ dialog.addEventListener('close',()=>opener?.focus());
   form.hidden = false;
   if (recording) {
     document.getElementById('visitor-notice').hidden = false;
-    record('visited').catch(() => {});
   }
 })();
 
