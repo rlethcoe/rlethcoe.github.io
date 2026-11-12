@@ -92,3 +92,48 @@ dialog.addEventListener('close',()=>opener?.focus());
     record('visited').catch(() => {});
   }
 })();
+
+
+(() => {
+  const viewer = document.getElementById('embed-viewer');
+  if (!viewer) return;
+
+  const frame = viewer.querySelector('iframe');
+  const title = document.getElementById('embed-title');
+  const closeButton = document.getElementById('embed-close');
+  let opener;
+
+  document.querySelectorAll('button[data-embed-src]').forEach(button => {
+    button.addEventListener('click', () => {
+      if (viewer.open) return;
+
+      opener = button;
+      const mediaTitle = button.dataset.embedTitle || 'Project media';
+      title.textContent = mediaTitle;
+      frame.title = mediaTitle;
+      viewer.showModal();
+      frame.src = button.dataset.embedSrc;
+    });
+  });
+
+  closeButton.addEventListener('click', () => viewer.close());
+
+  viewer.addEventListener('click', event => {
+    if (event.target !== viewer) return;
+
+    const { left, right, top, bottom } = viewer.getBoundingClientRect();
+    if (
+      event.clientX < left || event.clientX >= right ||
+      event.clientY < top || event.clientY >= bottom
+    ) {
+      viewer.close();
+    }
+  });
+
+  viewer.addEventListener('close', () => {
+    if (viewer.open) return;
+
+    frame.removeAttribute('src');
+    opener?.focus();
+  });
+})();
