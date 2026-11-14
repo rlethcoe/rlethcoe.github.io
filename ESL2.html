@@ -84,6 +84,9 @@
     .sun { background: linear-gradient(135deg, #5c1d1a, #df592b 53%, #ffc45c); }
     .protein { background: linear-gradient(135deg, #225638, #519347 54%, #b6cc63); }
     .earth { background: linear-gradient(135deg, #124653, #1d847c 54%, #7cc990); }
+    .walk { background: linear-gradient(135deg, #1d2a3a, #8a5a2b 55%, #e0a24a); }
+    .canva-embed { position: relative; width: 100%; height: 0; padding-top: 55.8342%; overflow: hidden; border-radius: 8px; box-shadow: 0 12px 35px rgba(0,0,0,.55); }
+    .canva-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .ferrari { background: linear-gradient(135deg, #360e21, #a41435 53%, #ef6a3d); }
     .birdsong { background: linear-gradient(135deg, #123e38, #397b52 54%, #8ca854); }
     .thumb.cover { background-position: center; background-repeat: no-repeat; background-size: cover; }
@@ -92,6 +95,7 @@
     .thumb.cover .thumb-word, .thumb.cover .thumb-icon { display: none; }
     .cover-toys { background-image: url("assets/esl2/toys-slide-01.jpg"); }
     .cover-birdsong { background-image: url("assets/esl2/birdsong-slide-01.jpg"); }
+    .cover-ai-partner { background-image: url("assets/esl2/ai-partner-slide-01.jpg"); }
     .cover-energy { background-image: url("assets/esl2/energy-slide-01.jpg"); }
     .cover-manga { background-image: url("assets/esl2/manga-slide-01.jpg"); }
     .cover-influencers { background-image: url("assets/esl2/influencers-slide-01.jpg"); }
@@ -186,6 +190,20 @@
 
     <section class="grid-wrap" aria-label="ESL 2 class lessons">
       <div class="grid">
+      <article class="card">
+        <a class="thumb walk" href="https://breakingnewsenglish.com/2611/261105-walking-around-the-world.html" target="_blank" rel="noopener noreferrer" data-lesson-id="walk" aria-label="Open the 28-year walk lesson details">
+          <time class="card-date" datetime="2026-11-14">November 14</time><span class="thumb-word">28-Year<br>Walk</span>
+        </a>
+        <div class="card-body"><h2>Man completes 28-year walk around the world</h2><p>A long journey home, problems on the road, and planning a walk worth remembering.</p></div>
+        <footer class="card-footer"><div class="footer-actions"><a class="lesson-link" href="https://breakingnewsenglish.com/2611/261105-walking-around-the-world.html" target="_blank" rel="noopener noreferrer">Open article</a><a class="kahoot-link" href="https://create.kahoot.it/details/8e210acc-1d1a-4ab0-bca5-10ea7c8ca929" target="_blank" rel="noopener noreferrer">Study with Kahoot</a></div></footer>
+      </article>
+      <article class="card">
+        <a class="thumb cover cover-ai-partner" href="https://breakingnewsenglish.com/2610/261022-ai-partner.html" target="_blank" rel="noopener noreferrer" data-lesson-id="ai-partner" aria-label="Open the AI partner lesson details">
+          <time class="card-date" datetime="2026-10-24">October 24</time><span class="thumb-word">AI<br>Partner</span>
+        </a>
+        <div class="card-body"><h2>Man sells everything for AI dream 'partner'</h2><p>An online relationship, an AI-created profile, and trust online.</p></div>
+        <footer class="card-footer"><div class="footer-actions"><a class="lesson-link" href="https://breakingnewsenglish.com/2610/261022-ai-partner.html" target="_blank" rel="noopener noreferrer">Open article</a><a class="kahoot-link" href="https://create.kahoot.it/details/f6ecfb16-0ce3-41fa-9e23-b847ee9b742a" target="_blank" rel="noopener noreferrer">Study with Kahoot</a></div></footer>
+      </article>
       <article class="card">
         <a class="thumb cover cover-energy" href="https://breakingnewsenglish.com/2610/261001-energy-price-crisis.html" target="_blank" rel="noopener noreferrer" data-lesson-id="energy" aria-label="Open the European Union energy price crisis lesson details">
           <time class="card-date" datetime="2026-10-17">October 17</time><span class="thumb-word">Energy<br>Price Crisis</span>
@@ -298,6 +316,27 @@
 
   <script>
     const lessons = {
+      walk: {
+        date: "November 14, 2026",
+        title: "Man completes 28-year walk around the world",
+        summary: "A news lesson about Karl Bushby's 28-year walk home, the problems he faced, and planning a walk of our own.",
+        source: "https://breakingnewsenglish.com/2611/261105-walking-around-the-world.html",
+        kahoot: "https://create.kahoot.it/details/8e210acc-1d1a-4ab0-bca5-10ea7c8ca929",
+        canva: "https://www.canva.com/design/DAHa2bZtTaA/No6iyNR8juN46_eBsmdQSg/view?embed",
+        slides: [],
+        showSentences: false,
+        sentences: []
+      },
+      "ai-partner": {
+        date: "October 24, 2026",
+        title: "Man sells everything for AI dream 'partner'",
+        summary: "A news lesson about an AI-created online profile, trust, and making careful decisions online.",
+        source: "https://breakingnewsenglish.com/2610/261022-ai-partner.html",
+        kahoot: "https://create.kahoot.it/details/f6ecfb16-0ce3-41fa-9e23-b847ee9b742a",
+        slides: Array.from({ length: 8 }, (_, index) => `assets/esl2/ai-partner-slide-${String(index + 1).padStart(2, "0")}.jpg`),
+        showSentences: false,
+        sentences: []
+      },
       energy: {
         date: "October 17, 2026",
         title: "European Union warns of energy price crisis",
@@ -435,6 +474,20 @@
     function renderCarousel() {
       carouselFrame.replaceChildren();
       carouselDots.replaceChildren();
+      if (activeLesson.canva) {
+        const embed = document.createElement("div");
+        embed.className = "canva-embed";
+        const frame = document.createElement("iframe");
+        frame.src = activeLesson.canva;
+        frame.title = `${activeLesson.title}: slides`;
+        frame.loading = "lazy";
+        frame.allow = "fullscreen";
+        frame.allowFullscreen = true;
+        embed.append(frame);
+        carouselFrame.append(embed);
+        carouselStatus.textContent = "Use the arrows inside the slides";
+        return;
+      }
       if (!activeLesson.slides.length) {
         const pending = document.createElement("div");
         pending.className = "slides-pending";
