@@ -84,6 +84,7 @@
     .sun { background: linear-gradient(135deg, #5c1d1a, #df592b 53%, #ffc45c); }
     .protein { background: linear-gradient(135deg, #225638, #519347 54%, #b6cc63); }
     .earth { background: linear-gradient(135deg, #124653, #1d847c 54%, #7cc990); }
+    .pizza { background: linear-gradient(135deg, #472012, #733317 54%, #9c4722); }
     .cover-walk { background-image: url("https://drive.google.com/thumbnail?id=1qBmaIfxXaTXJ_5vYHVqJt7G8qL9Dac6b&sz=w800"); }
     .card-body .card-studied { margin: 0 0 6px; color: var(--text-muted); font-size: .78rem; font-weight: 600; letter-spacing: .08em; line-height: 1.3; text-transform: uppercase; }
     .walk { background: linear-gradient(135deg, #1d2a3a, #8a5a2b 55%, #e0a24a); }
@@ -192,6 +193,13 @@
 
     <section class="grid-wrap" aria-label="ESL 2 class lessons">
       <div class="grid">
+      <article class="card">
+        <a class="thumb pizza" href="https://breakingnewsenglish.com/2611/261109-pineapple-on-pizza.html" target="_blank" rel="noopener noreferrer" data-lesson-id="pizza" aria-label="Open the pineapple pizza lesson details">
+          <span class="thumb-word">Pineapple<br>Pizza</span>
+        </a>
+        <div class="card-body"><p class="card-studied">November 21, 2026</p><h2>Chef fired for refusing to put pineapple on pizza</h2><p>A chef loses his job, and people disagree about whether pineapple belongs on pizza.</p></div>
+        <footer class="card-footer"><div class="footer-actions"><a class="lesson-link" href="https://breakingnewsenglish.com/2611/261109-pineapple-on-pizza.html" target="_blank" rel="noopener noreferrer">Open article</a></div></footer>
+      </article>
       <article class="card">
         <a class="thumb cover cover-walk" href="https://breakingnewsenglish.com/2611/261105-walking-around-the-world.html" target="_blank" rel="noopener noreferrer" data-lesson-id="walk" aria-label="Open the 28-year walk lesson details">
           <span class="thumb-word">28-Year<br>Walk</span>
@@ -318,6 +326,15 @@
 
   <script>
     const lessons = {
+      pizza: {
+        date: "November 21, 2026",
+        title: "Chef fired for refusing to put pineapple on pizza",
+        summary: "A chef loses his job, and people disagree about whether pineapple belongs on pizza.",
+        source: "https://breakingnewsenglish.com/2611/261109-pineapple-on-pizza.html",
+        slides: [],
+        showSentences: false,
+        sentences: []
+      },
       walk: {
         date: "November 14, 2026",
         title: "Man completes 28-year walk around the world",
